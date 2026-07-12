@@ -20,6 +20,8 @@ Bu proje, **ESP32** mikrodenetleyicisi ve **HC-SR04 ultrasonik mesafe sensörü*
 ---
 
 ## 💻 Proje Kodu (C++)
+
+'''cpp
 #include <Wire.h>
 #include <LiquidCrystal_I2C.h>
 
@@ -47,7 +49,6 @@ void setup() {
 }
 
 void loop() {
-
   // -- 1. Ölçüm --
   digitalWrite(trigPin, LOW);
   delayMicroseconds(2);
@@ -68,10 +69,9 @@ void loop() {
   lcd.print(" cm    ");
 
   // -- 3. LED + Buzzer Mantığı --
-
   if (distance > 30) {
     // YEŞİL bölge — seyrek ama hissedilir bip (400ms aralık)
-    digitalWrite(ledGreen,  HIGH);
+    digitalWrite(ledGreen,   HIGH);
     digitalWrite(ledYellow, LOW);
     digitalWrite(ledRed,    LOW);
 
@@ -82,7 +82,7 @@ void loop() {
 
   } else if (distance <= 30 && distance > 15) {
     // SARI bölge — yaklaştıkça hızlanan bip
-    digitalWrite(ledGreen,  LOW);
+    digitalWrite(ledGreen,   LOW);
     digitalWrite(ledYellow, HIGH);
     digitalWrite(ledRed,    LOW);
 
@@ -93,7 +93,7 @@ void loop() {
 
   } else {
     // KIRMIZI bölge — seri / sürekli bip
-    digitalWrite(ledGreen,  LOW);
+    digitalWrite(ledGreen,   LOW);
     digitalWrite(ledYellow, LOW);
     digitalWrite(ledRed,    HIGH);
 
